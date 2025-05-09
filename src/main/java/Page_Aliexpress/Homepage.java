@@ -2,11 +2,13 @@ package Page_Aliexpress;
 
 import java.util.Set;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Homepage {
@@ -27,6 +29,8 @@ public class Homepage {
 		for(String window:windowid) {
 			if(!parent.equalsIgnoreCase(window)) {
 				driver.switchTo().window(window);
+				boolean buynow=driver.findElement(By.xpath("//span[text()='Buy now']")).isEnabled();
+		    	Assert.assertTrue(buynow,"The buy now button is not available");
 				addtocart.click();	
 			}
 		}

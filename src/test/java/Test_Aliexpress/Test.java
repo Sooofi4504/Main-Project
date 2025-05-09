@@ -1,6 +1,9 @@
 package Test_Aliexpress;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
 import Base.Base_Aliexpress;
 import Page_Aliexpress.Cart_Page;
 import Page_Aliexpress.Homepage;
@@ -11,6 +14,9 @@ import Page_Aliexpress.Sign_In;
 public class Test extends Base_Aliexpress{
 	@org.testng.annotations.Test(priority = 0)
 	public void Registration_test() {
+		String acturl=("https://www.aliexpress.com/");
+		String expurl=driver.getCurrentUrl();
+		Assert.assertEquals(acturl, expurl,"The homepage is verified");
 	Sign_In si=new Sign_In(driver);
 	si.registerpage();
 	}

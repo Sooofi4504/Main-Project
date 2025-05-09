@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class Cart_Page {
 	WebDriver driver;
@@ -26,6 +27,9 @@ public class Cart_Page {
 	}
 	public void cartpagefunctionality() {
 		cartpage.click();
+		String acttitle="Shopping Cart";
+    	String exptitle=driver.getTitle();
+    	Assert.assertEquals(acttitle, exptitle,"The title doent match");
 		driver.navigate().refresh();
 		selectalltheproduct.click();
 		WebDriverWait wt=new WebDriverWait(driver, Duration.ofSeconds(10));
